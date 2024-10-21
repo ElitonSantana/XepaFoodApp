@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet, Alert } from "react-native";
 import api from '../services/axios';
-import { useAuth } from '../context/AuthContext'; 
+import { useAuth } from '../context/AuthContext';
 
 const LoginScreen = () => {
   const { login } = useAuth();
@@ -15,10 +15,7 @@ const LoginScreen = () => {
     }
 
     try {
-      const response = await api.post('/api/Usuario/Login', {
-        email: email,
-        senha: senha,
-      });
+      const response = await api.post('/api/Usuario/Login', { email, senha });
 
       if (response.status === 200) {
         login(response.data.user);
